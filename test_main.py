@@ -19,9 +19,8 @@ class MedianFinderTest(unittest.TestCase):
 
     def test_get_with_odd_number_of_values(self):
         finder = main.MedianFinder()
-        finder.add(6)
-        finder.add(3)
-        finder.add(4)
+        for n in (6, 3, 4):
+            finder.add(n)
 
         median = finder.get()
 
@@ -29,10 +28,8 @@ class MedianFinderTest(unittest.TestCase):
 
     def test_get_with_even_number_of_values(self):
         finder = main.MedianFinder()
-        finder.add(6)
-        finder.add(3)
-        finder.add(4)
-        finder.add(10)
+        for n in (6, 3, 4, 10):
+            finder.add(n)
 
         median = finder.get()
 
