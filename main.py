@@ -6,15 +6,17 @@ class MedianFinder:
     def add(self, number):
         self.numbers.append(number)
 
+    def _is_even(self, num):
+        return num % 2 == 0
+
+    def _mean_of_pair(self, numbers, i, j):
+        return (numbers[i] + numbers[j]) / 2
+
     def get(self):
         numbers = sorted(self.numbers)
         middle = len(numbers) // 2
-        try:
-            if len(numbers) > 0 and len(numbers) % 2 == 0:
-                upper_middle = middle
-                lower_middle = upper_middle - 1
-                return (numbers[lower_middle] + numbers[upper_middle]) / 2
-            else:
-                return numbers[middle]
-        except IndexError:
+        if len(numbers) == 0:
             raise RuntimeError('No values added')
+        if self._is_even(len(numbers)):
+            return self._mean_of_pair(numbers, middle - 1, middle)
+        return numbers[middle]
