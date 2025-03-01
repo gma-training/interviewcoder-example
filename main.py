@@ -13,10 +13,10 @@ class MedianFinder:
         return (numbers[i] + numbers[j]) / 2
 
     def get(self):
-        numbers = sorted(self.numbers)
-        middle = len(numbers) // 2
-        if len(numbers) == 0:
+        if len(self.numbers) == 0:
             raise RuntimeError('No values added')
-        if self._is_even(len(numbers)):
-            return self._mean_of_pair(numbers, middle - 1, middle)
-        return numbers[middle]
+        self.numbers.sort()
+        middle = len(self.numbers) // 2
+        if self._is_even(len(self.numbers)):
+            return self._mean_of_pair(self.numbers, middle - 1, middle)
+        return self.numbers[middle]
